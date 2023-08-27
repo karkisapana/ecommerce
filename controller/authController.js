@@ -84,7 +84,7 @@ export const loginController = async (req, res) => {
             return res.status(404).send({
                 success:false,
                 message:"Invalid email or password"
-            })
+            });
         }
 
 

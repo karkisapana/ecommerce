@@ -4,7 +4,6 @@ import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
-// import "../../styles/AuthStyles.css";
 import "../../style/AuthStyle.css"
 import { useAuth } from "../../context/auth";
 const Login = () => {
