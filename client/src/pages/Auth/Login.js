@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../style/AuthStyle.css"
 import { useAuth } from "../../context/auth";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +40,7 @@ const Login = () => {
       toast.error("Something went wrong");
     }
   };
+  
   return (
     <Layout title="Register - Ecommer App">
       <div className="form-container ">
@@ -89,3 +91,10 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
+
+
+
