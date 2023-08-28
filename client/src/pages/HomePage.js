@@ -11,7 +11,7 @@ const HomePage = () => {
   //get products
   const getAllProducts = async() => {
     try {
-      const {data} = await axios.get('/api/v1/product/get-product')
+      const {data} = await axios.get('https://ecommerce-oqlg.onrender.com/api/v1/product/get-product')
       setProducts(data.products);
     } catch (error) {
       console.log(error)
@@ -36,7 +36,7 @@ const HomePage = () => {
         
         <div className="card m-2" style={{width: '18rem'}}>
           <img 
-          src={`/api/v1/product/product-photo/${p._id}`} 
+          src={`https://ecommerce-oqlg.onrender.com/api/v1/product/product-photo/${p._id}`} 
           className="card-img-top" 
           alt={p.name} />
           <div className="card-body">

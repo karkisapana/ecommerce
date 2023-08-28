@@ -7,7 +7,7 @@ const Policy = () => {
       <div className="row contactus ">
         <div className="col-md-6 mt-3">
           <img
-            src="/images/privacy.jpeg"
+            src="https://ecommerce-oqlg.onrender.com/images/privacy.jpeg"
             alt="Privacy Policy"
             style={{ width: "80%" }}
           />

@@ -17,7 +17,7 @@ const CreateCategory = () => {
   const handleSubmit = async(e) => {
     e.preventDefault()
     try {
-      const {data} = await axios.post('/api/v1/category/create-category', {name})
+      const {data} = await axios.post('https://ecommerce-oqlg.onrender.com/api/v1/category/create-category', {name})
       if(data?.success){
         toast.success(`${name} is created`);
         getAllCategory();
@@ -34,7 +34,7 @@ const CreateCategory = () => {
   //get all cat
   const getAllCategory = async() => {
     try {
-      const {data} =  await axios.get('/api/v1/category/get-category')
+      const {data} =  await axios.get('https://ecommerce-oqlg.onrender.com/api/v1/category/get-category')
       if (data?.success){
         setCategories(data?.category);
       }
@@ -55,7 +55,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const {data} = await axios.put(
-        `/api/v1/category/update-category/${selected._id}`,
+        `https://ecommerce-oqlg.onrender.com/api/v1/category/update-category/${selected._id}`,
        {name: updatedName});
 
       if(data.success) {
@@ -80,7 +80,7 @@ const CreateCategory = () => {
       
       try {
         const {data} = await axios.delete(
-          `/api/v1/category/delete-category/${pId}`,
+          `https://ecommerce-oqlg.onrender.com/api/v1/category/delete-category/${pId}`,
         );
         if(data.success) {
           toast.success(`category is daleted`);
