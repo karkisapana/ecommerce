@@ -9,7 +9,7 @@ const { Option } = Select;
 
 const UpdateProduct = () => {
     const navigate = useNavigate();
-    const params = useParams();
+    const params = useParams()
     const [categories, setCategories] = useState([]);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -21,9 +21,10 @@ const UpdateProduct = () => {
     const [id, setId] = useState("");
 
     //GET SINGLE PRODUCT
-    const getSingleProduct = async() => {
+    const getSingleProduct = async () => {
         try {
-            const {data} = await axios.get(`https://ecommerce-oqlg.onrender.com/api/v1/product/get-product/${params.slug}`
+            const {data} = await axios.get(
+              `https://ecommerce-oqlg.onrender.com/api/v1/product/get-product/${params.slug}`
             );
             setName(data.product.name);
             setId(data.product._id);
@@ -32,16 +33,14 @@ const UpdateProduct = () => {
             setQuantity(data.product.quantity);
             setShipping(data.product.shipping);
             setCategory(data.product.category._id);
-
-
-            
+           
         } catch (error) {
             console.log(error)
             
         }
     };
     useEffect(() => {
-        getSingleProduct()
+        getSingleProduct();
         //eslint-disable-next-line
     },[])
   
@@ -73,6 +72,7 @@ const UpdateProduct = () => {
         productData.append("quantity", quantity);
         photo && productData.append("photo", photo);
         productData.append("category", category);
+
         const { data } = axios.put(
           `https://ecommerce-oqlg.onrender.com/api/v1/product/update-product/${id}`,
           productData
@@ -80,7 +80,7 @@ const UpdateProduct = () => {
         if (data?.success) {
           toast.error(data?.message);
         } else {
-          toast.success("Product Created Successfully");
+          toast.success("Product Updated Successfully");
           navigate('/dashboard/admin/products');
         }
       } catch (error) {
@@ -114,7 +114,7 @@ const UpdateProduct = () => {
           <AdminMenu />
         </div>
         <div className="col-md-9">
-          <h1>Uodate Product</h1>
+          <h1>Update Product</h1>
           <div className="m-1 w-75">
             <Select
               bordered={false}
@@ -158,7 +158,7 @@ const UpdateProduct = () => {
               ) : (
                 <div className="text-center">
                   <img
-                    src={`/api/v1/product/product_photo/${id}`}
+                    src={`https://ecommerce-oqlg.onrender.com/api/v1/product/product_photo/${id}`}
                     alt="product_photo"
                     height={"200px"}
                     className="img img-responsive"
@@ -230,9 +230,6 @@ const UpdateProduct = () => {
                 DELETE PRODUCT
               </button>
             </div>
-
-                
-
           </div>
         </div>
       </div>
@@ -242,4 +239,4 @@ const UpdateProduct = () => {
   )
 }
 
-export default UpdateProduct
+export default UpdateProduct;

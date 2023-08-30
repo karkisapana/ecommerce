@@ -171,7 +171,9 @@ const CreateProduct = () => {
                 </Select>
               </div>
               <div className="mb-3">
-                <button type="button" className="btn btn-primary" onClick={handleCreate}>
+                <button type="button" 
+                className="btn btn-primary" 
+                onClick={handleCreate}>
                   CREATE PRODUCT
                 </button>
               </div>

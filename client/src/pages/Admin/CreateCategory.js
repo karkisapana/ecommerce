@@ -139,7 +139,10 @@ const CreateCategory = () => {
         }}>
       Edit
       </button>
-      <button className='btn btn-danger ms-2' onClick={() => {handleDelete(c._id)}}>Delete</button>
+      <button className='btn btn-danger ms-2' 
+      onClick={() => {handleDelete(c._id)}}>
+      Delete
+      </button>
 
       </td>
       </tr>
