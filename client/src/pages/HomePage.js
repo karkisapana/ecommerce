@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
-import {Button, Checkbox, Radio} from 'antd';
+import { Checkbox, Radio} from 'antd';
 import { Prices } from "../components/Prices";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate()
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -62,7 +64,7 @@ const HomePage = () => {
     }
   }
   useEffect(() => {
-    if (page ===1) return;
+    if(page === 1) return;
     loadMore();
   },[page]);
 
@@ -70,14 +72,14 @@ const HomePage = () => {
   const loadMore = async() => {
     try {
       setLoading(true)
-        const {data} = await axios.get(`/api/v1/product/product-list/${page}`)
+        const {data} = await axios.get(
+          `https://ecommerce-oqlg.onrender.com/api/v1/product/product-list/${page}`)
         setLoading(false)
         setProducts([...products, ...data?.products]);
     } catch (error) {
       console.log(error)
       setLoading(false)
-      
-    }
+      }
   }
   
 
@@ -142,7 +144,8 @@ const HomePage = () => {
               ))}
             </Radio.Group>
             <div className="d-flex flex-column">
-              <button className="btn btn-danger" onClick={() => window.location.reload()}>
+              <button className="btn btn-danger" 
+              onClick={() => window.location.reload()}>
                RESET FILTERS
                </button>
             </div>
@@ -150,14 +153,14 @@ const HomePage = () => {
 
       </div>
       <div className="col-md-9">
-      {/* {JSON.stringify(checked, null, 4)} */}
         <h1 className="text-center">All products</h1>
         <div className="d-flex flex-wrap">
        {products?.map((p) => (
         
         <div className="card m-2" style={{width: '18rem'}}>
           <img 
-          src={`https://ecommerce-oqlg.onrender.com/api/v1/product/product-photo/${p._id}`} 
+          src={
+            `https://ecommerce-oqlg.onrender.com/api/v1/product/product-photo/${p._id}`} 
           className="card-img-top" 
           alt={p.name} />
           <div className="card-body">
@@ -166,7 +169,9 @@ const HomePage = () => {
             </p>
             <p className="card-text"> $ {p.price}</p>
 
-            <button href="#" class="btn btn-primary ms-1">More Details</button>
+            <button href="#" class="btn btn-primary ms-1" 
+            onClick={() => navigate(`/product/${p.slug}`)}
+            >More Details</button>
             <button href="#" class="btn btn-secondary ms-1">Add To Cards</button>
 
   </div>
@@ -174,8 +179,9 @@ const HomePage = () => {
          )) }
         </div>
         <div className="m-2 p-3">
-          {products && products.length <total && (
-            <button className="btn btn-warning" onClick={(e) => {
+          {products && products.length < total && (
+            <button className="btn btn-warning" 
+            onClick={(e) => {
               e.preventDefault();
               setPage(page + 1);
             }}

@@ -18,9 +18,9 @@ import PrivateRoute from './components/Routes/AdminRoute';
 import Dashboard from './pages/user/Dashboard';
 import Products from './pages/Admin/Products';
 import UpdateProduct from './pages/Admin/UpdateProduct';
-
-
-import React from 'react'
+import React from 'react';
+import Search from './pages/Search';
+import ProductDetails from './pages/productDetails';
 
 const App = () => {
   return (
@@ -29,8 +29,10 @@ const App = () => {
 
     <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/product/:slug" element={<ProductDetails />} />
 
-        
+        <Route path="/search" element={<Search />} />
+
           <Route path="/dashboard" element={<PrivateRoute />} >
           <Route path="user" element = {<Dashboard />} />
           <Route path="user/orders" element={<Orders />} />
