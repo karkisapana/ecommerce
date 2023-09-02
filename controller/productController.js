@@ -1,5 +1,6 @@
 import slugify from 'slugify';
 import productModel from '../models/productModel.js';
+import categoryModal from '../models/categoryModel.js'
 import fs from 'fs';
 import router from '../routes/productRoutes.js';
 
@@ -318,6 +319,24 @@ export const searchProductController = async(req, res) => {
                 success: false,
                 message:'Error while geting releted products',
                 error
+            })
+        }
+    };
+
+    //get product by categories
+    export const productCategoryController = async (req, res) => {
+        try {
+            const category = await categoryModal.findOne({slug:req.params.slug})
+            const products = await productModel.find({category}).populate('category')
+            res.status(200).send({
+                category,
+                products,
+            });
+        } catch (error) {
+            console.log(error)
+            res.status(400).send({
+                success:false,
+                message: "Error while getting products"
             })
             
         }
