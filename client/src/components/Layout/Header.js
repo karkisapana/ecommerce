@@ -137,7 +137,7 @@ const Header = () => {
               <NavLink to="/cart" className="nav-link">
                   Cart 
                 </NavLink>
-    </Badge>
+               </Badge>
                 
               </li>
             </ul>
