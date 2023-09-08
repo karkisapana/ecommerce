@@ -7,6 +7,7 @@ import UserMenu from "../../components/Layout/UserMenu";
 
 const Dashboard = () => {
   const [auth] = useAuth();
+  console.log('hello');
   return (
     <Layout title={"Dashboard - Ecommerce App"}>
       <div className="container-flui m-3 p-3">

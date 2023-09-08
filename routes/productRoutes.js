@@ -29,7 +29,7 @@ createProductController
 
 //update Product
 
-router.post('/update-product/:pid', 
+router.patch('/update-product/:pid', 
 requireSignIn, 
 isAdmin,formidable(),
 updateProductController 

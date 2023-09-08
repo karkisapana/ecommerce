@@ -73,15 +73,18 @@ const UpdateProduct = () => {
         photo && productData.append("photo", photo);
         productData.append("category", category);
 
-        const { data } = axios.put(
+        const { data } = await axios.patch(
           `https://ecommerce-oqlg.onrender.com/api/v1/product/update-product/${id}`,
+        
           productData
         );
+     
         if (data?.success) {
-          toast.error(data?.message);
-        } else {
           toast.success("Product Updated Successfully");
           navigate('/dashboard/admin/products');
+         
+        } else {
+          toast.error(data?.message);
         }
       } catch (error) {
         console.log(error);

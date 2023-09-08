@@ -14,7 +14,7 @@ import CreateProduct from './pages/Admin/CreateProduct';
 import Users from './pages/Admin/Users';
 import Orders from './pages/user/Orders';
 import Profile from './pages/user/Profile';
-import PrivateRoute from './components/Routes/AdminRoute';
+import PrivateRoute from './components/Routes/PrivateRoute';
 import Dashboard from './pages/user/Dashboard';
 import Products from './pages/Admin/Products';
 import UpdateProduct from './pages/Admin/UpdateProduct';

@@ -113,7 +113,8 @@ const CartPage = () => {
                         <p>{p.name}</p>
                         <p>{p.description.substring(0, 30)}</p>
                         <p>Price : {p.price}</p>
-                        <button className='btn btn-danger' onClick={() => removeCartItem(p._id)}>
+                        <button className='btn btn-danger' 
+                        onClick={() => removeCartItem(p._id)}>
                         Remove
                         </button>
                     </div>
