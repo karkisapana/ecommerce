@@ -42,8 +42,8 @@ try {
             return res.status(500).send({error:'quantity is require'})
 
 
-            case !photo && photo.size> 1000000:
-            return res.status(500).send({error:'photo is require and should be less than 1 mb'})
+            // case !photo && photo.size> 1000000:
+            // return res.status(500).send({error:'photo is require and should be less than 1 mb'})
 
       }
 
@@ -191,9 +191,9 @@ export const updateProductController = async(req, res) => {
         return res.status(500).send({error:'quantity is require'})
 
 
-        case !photo && photo.size> 1000000:
-        return res.status(500)
-        .send({error:'photo is require and should be less than 1 mb'})
+        // case !photo && photo.size> 1000000:
+        // return res.status(500)
+        // .send({error:'photo is require and should be less than 1 mb'})
 
   }
     const products = await productModel.findByIdAndUpdate({_id: req.params.pid},

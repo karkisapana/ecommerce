@@ -74,7 +74,7 @@ const UpdateProduct = () => {
         productData.append("category", category);
 
         const { data } = await axios.patch(
-          `https://ecommerce-oqlg.onrender.com/api/v1/product/update-product/${id}`,
+          `http://localhost:5000/api/v1/product/update-product/${id}`,
         
           productData
         );
