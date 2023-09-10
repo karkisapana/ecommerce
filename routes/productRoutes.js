@@ -32,6 +32,7 @@ createProductController
 router.patch('/update-product/:pid', 
 requireSignIn, 
 isAdmin,formidable(),
+// updateProductController 
 updateProductController 
 );
 

@@ -44,15 +44,15 @@ router.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
 
 
 // update profile
-router.put('/profile', requireSignIn, updateProfileController)
+router.put('/profile', requireSignIn, updateProfileController);
 export default router;
 
 //order
-router.get('/orders',requireSignIn, getOrdersController)
+router.get('/orders',requireSignIn, getOrdersController);
 
 
 //All-order
-router.get('/all-orders',requireSignIn,isAdmin, getAllOrdersController)
+router.get('/all-orders',requireSignIn,isAdmin, getAllOrdersController);
 
 //order status update
-router.get('/order-status/:orderId', requireSignIn, isAdmin, orderStatusController)
+router.get('/order-status/:orderId', requireSignIn, isAdmin, orderStatusController);

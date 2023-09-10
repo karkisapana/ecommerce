@@ -218,7 +218,7 @@ export const updateProfileController = async (req, res) => {
             success:false,
             message:"Error while update profile",
             error
-        })
+        });
         
     }
 };
@@ -236,14 +236,14 @@ export const getOrdersController = async(req, res) => {
             success:false,
             message:'Error while gtting Orders',
             error
-        })
+        });
         
     }
 
 };
 
 //all-orders 
-export const getAllOrdersController = async(req, res) => {
+export const getAllOrdersController = async (req, res) => {
     try {
         const orders = await orderModel.find({})
         .populate('products',"-photo")
@@ -254,9 +254,9 @@ export const getAllOrdersController = async(req, res) => {
         console.log(error)
         res.status(500).send({
             success:false,
-            message:'Error while gtting Orders',
+            message:'Error while getting Orders',
             error
-        })
+        });
         
     }
 
@@ -267,17 +267,18 @@ export const orderStatusController = async (req, res) => {
     try {
         const {orderId} = req.params
         const {status} = req.body
-        const orders = await orderModel.findByIdAndUpdate(orderId, {status},{new:true})
+        const orders = await orderModel.findByIdAndUpdate(orderId, {status},
+            {new:true})
         res.json(orders);
     } catch (error) {
         console.log(error)
         res.status(400).send({
             success:true,
             message:'Error while Updating Order',
-            error
-        })
+            error,
+        });
         
     }
-}
+};
 
 

@@ -166,14 +166,15 @@ export const  productPhotoController = async(req, res) => {
 
 //update product
 
-export const updateProductController = async(req, res) => {
+export const updateProductController = async (req, res) => {
     try {
     const { name, description, price, category, quantity, shipping} = 
     req.fields;
     const {photo} = req.files;
     //Validation
 
-    switch(true){
+    switch(true) {
+        
         case !name: 
         return res.status(500).send({error:'Name is require'})
 
@@ -191,14 +192,15 @@ export const updateProductController = async(req, res) => {
         return res.status(500).send({error:'quantity is require'})
 
 
-        // case !photo && photo.size> 1000000:
-        // return res.status(500)
-        // .send({error:'photo is require and should be less than 1 mb'})
+        case !photo && photo.size> 1000000:
+        return res.status(500)
+        .send({error:'photo is require and should be less than 1 mb'})
 
   }
     const products = await productModel.findByIdAndUpdate({_id: req.params.pid},
-        {...req.files, slug:slugify(name)}, {new:true}
-        )
+        {...req.files, slug: slugify(name)}, 
+        {new:true}
+        );
     if (photo){
         products.photo.data = fs.readFileSync(photo.path);
         products.photo.contentType = photo.type;
@@ -215,8 +217,8 @@ export const updateProductController = async(req, res) => {
     console.log(error)
     res.status(500).send({
         success:false,
-        error,
-        message:"Error in updating Product"
+        message:"Error in updating Product",
+         error,
     });
 }
 };
@@ -273,7 +275,7 @@ export const productListController = async(req, res) => {
         const products = await productModel
         .find({})
         .select("-photo")
-        .skip((page -1) * perPage).limit(perPage)
+        .skip((page - 1) * perPage).limit(perPage)
         .sort({createdAt: -1});
         res.status(200).send({
             success: true,
@@ -285,9 +287,9 @@ export const productListController = async(req, res) => {
             success:false,
             message:'error in per page ctrl',
             error,
-        })
+        });
      }
- }
+ };
 
 
 //search product

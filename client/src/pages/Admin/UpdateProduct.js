@@ -9,7 +9,8 @@ const { Option } = Select;
 
 const UpdateProduct = () => {
     const navigate = useNavigate();
-    const params = useParams()
+    const params = useParams();
+
     const [categories, setCategories] = useState([]);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -47,7 +48,8 @@ const UpdateProduct = () => {
     //get all category
     const getAllCategory = async() => {
       try {
-        const { data } = await axios.get("https://ecommerce-oqlg.onrender.com/api/v1/category/get-category");
+        const { data } = await axios.get(
+          "https://ecommerce-oqlg.onrender.com/api/v1/category/get-category");
         if (data?.success) {
           setCategories(data?.category);
         }
@@ -74,7 +76,7 @@ const UpdateProduct = () => {
         productData.append("category", category);
 
         const { data } = await axios.patch(
-          `http://localhost:5000/api/v1/product/update-product/${id}`,
+          `https://ecommerce-oqlg.onrender.com/api/v1/product/update-product/${id}`,
         
           productData
         );
