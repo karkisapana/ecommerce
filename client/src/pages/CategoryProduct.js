@@ -49,7 +49,9 @@ const CategoryProduct = () => {
             <button href="#" class="btn btn-primary ms-1" 
             onClick={() => navigate(`/product/${p.slug}`)}
             >More Details</button>
-            <button href="#" class="btn btn-secondary ms-1">Add To Cards</button>
+            <button href="#" class="btn btn-secondary ms-1">
+            Add To Cards
+            </button>
 
   </div>
   </div>

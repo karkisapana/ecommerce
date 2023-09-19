@@ -159,30 +159,6 @@ const CartPage = () => {
                 </div>
             )}
 
-            {/* <div className='mt-2'>
-            {
-                !clientToken || !cart?.length ? (""
-                ) : (
-                    <>
-                    <DropIn 
-                        options={{
-                            authorization: clientToken,
-                            paypal:{
-                                flow:'vault'
-                            },
-                        }}
-                        onInstance={instance => setInstance(instance)}
-                    />
-                    <button className='btn btn-primary' 
-                    onClick={handlePayment}
-                    disabled={!loading || !instance || !auth?.user?.address}>
-                    {loading ? "processing...." : "Make Payment"}
-                    </button>
-                     </>
-                )
-            }
-
-            </div> */}
 
 
             <div className="mt-2">

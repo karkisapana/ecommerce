@@ -6,6 +6,7 @@ import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import { toast } from "react-hot-toast";
+import { AiOutlineReload } from "react-icons/ai";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -23,7 +24,8 @@ const HomePage = () => {
   //get all cat
   const getAllCategory = async() => {
     try {
-      const {data} =  await axios.get('https://ecommerce-oqlg.onrender.com/api/v1/category/get-category')
+      const {data} =  await axios.get(
+        'https://ecommerce-oqlg.onrender.com/api/v1/category/get-category')
       if (data?.success){
         setCategories(data?.category);
       }
@@ -195,7 +197,15 @@ const HomePage = () => {
               setPage(page + 1);
             }}
             >
-              {loading ? "Loading..." : "Loadmore"}
+              {/* {loading ? "Loading..." : "Loadmore"} */}
+              {loading ? (
+                  "Loading ..."
+                ) : (
+                  <>
+                    {" "}
+                    Loadmore <AiOutlineReload />
+                  </>
+                )}
             </button>
           )}
         </div>
