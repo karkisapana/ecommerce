@@ -42,8 +42,8 @@ try {
             return res.status(500).send({error:'quantity is require'})
 
 
-            // case !photo && photo.size> 1000000:
-            // return res.status(500).send({error:'photo is require and should be less than 1 mb'})
+             case !photo && photo.size> 1000000:
+             return res.status(500).send({error:'photo is require and should be less than 1 mb'})
 
       }
 
@@ -270,12 +270,12 @@ export const productFiltersController = async (req, res) => {
 //product list based on list
 export const productListController = async(req, res) => {
     try {
-        const perPage = 3
+        const perPage = 8
         const page = req.params.page ? req.params.page : 1;
         const products = await productModel
         .find({})
         .select("-photo")
-        .skip((page - 1) * perPage).limit(perPage)
+        .skip((page -1) * perPage).limit(perPage)
         .sort({createdAt: -1});
         res.status(200).send({
             success: true,
